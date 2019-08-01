@@ -1,27 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
- 
+
+void fcopy(char file1[],char file2[])
+{
+   FILE *ptrf;
+   ptrf=fopen(file1,"r");
+   char c[100];
+   int i;
+   while((c[i]=fgetc(ptrf))!=EOF)
+   {
+       ++i;
+   }
+   fclose(ptrf);
+   ptrf=fopen(file2,"w");
+   fprintf(ptrf,"%s",c);
+   fclose(ptrf);
+}
 int main()
 {
-   char ch, file_name[25];
-   FILE *fp;
- 
-   printf("Enter name of a file you wish to see\n");
-   gets(file_name);
- 
-   fp = fopen(file_name, "r"); // read mode
- 
-   if (fp == NULL)
-   {
-      perror("Error while opening the file.\n");
-      exit(EXIT_FAILURE);
-   }
- 
-   printf("The contents of %s file are:\n", file_name);
- 
-   while((ch = fgetc(fp)) != EOF)
-      printf("%c", ch);
- 
-   fclose(fp);
-   return 0;
+    char filename1[100];
+    char filename2[100];
+    printf("file to copy from:\n");
+    scanf("%s",filename1);
+    printf("file to paste to:\n");
+    scanf("%s",filename2);
+    fcopy(filename1,filename2);
 }
