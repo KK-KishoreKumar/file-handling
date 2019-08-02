@@ -47,12 +47,29 @@ void fadds(char filename[],char text[])
 
 int main()
 {
-    /* char filename1[100];
-    char filename2[100];
-    printf("file to copy from:\n");
-    scanf("%s",filename1);
-    printf("file to paste to:\n");
-    scanf("%s",filename2);
-    fcopys(filename1,filename2);*/
-    fadds("test.txt","adding toppings?");
+    char choice;
+    printf("enter c for file copying\nenter w for file wrting\nenter r for file reading\nenter a for adding contents to the end of the file\n");
+    scanf("%c",&choice);
+    char cfile1[100];
+    char cfile2[100];
+    char wfile[100];
+    char wtext[100];
+    if (choice=='c')
+    {
+        printf("enter name of the file to copy from:");
+        scanf("%s",&cfile1);
+        printf("enter name of the file to paste to:");
+        scanf("%s",&cfile2);
+        fcopys(cfile1,cfile2);
+    }
+
+    else if(choice=='w')
+    {
+        printf("enter the name of the file to be written:");
+        scanf("%s",wfile);
+        printf("enter the text to be written:");
+        scanf("%s",wtext);
+        fwrites(wfile,wtext);
+    }
+    
 }
